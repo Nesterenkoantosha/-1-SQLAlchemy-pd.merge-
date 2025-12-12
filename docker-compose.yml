@@ -65,6 +65,8 @@ right_merge
 
 https://github.com/yourusername/netflix-docker
 
+https://github.com/Nesterenkoantosha/-1-SQLAlchemy-pd.merge-
+
 outer_merge = df.merge(extra, on="show_id", how="outer")
 outer_merge
 

@@ -1,0 +1,28 @@
+import pandas as pd
+from sqlalchemy import create_engine
+
+engine = create_engine("postgresql://user:password@localhost:5432/netflix")
+
+# Тест-запит
+pd.read_sql_query("SELECT 1;", engine)
+
+titles = pd.read_csv("netflix_titles.csv")
+titles.head()
+
+titles.to_sql("titles", engine, if_exists="replace", index=False)
+
+
+movies = pd.read_sql_query("""
+SELECT * FROM titles
+WHERE type = 'Movie';
+""", engine)
+
+movies.head()
+
+adult_ratings = pd.read_sql_query("""
+SELECT * FROM titles
+WHERE rating IN ('R', 'TV-MA');
+""", engine)
+
+adult_ratings.head()
+

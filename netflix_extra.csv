@@ -1,0 +1,20 @@
+show_id,platform
+s1,Netflix Original
+s5,Licensed Content
+s8,Netflix Original
+s10,Co-Production
+
+extra = pd.read_csv("netflix_extra.csv")
+extra
+
+inner_merge = titles.merge(extra, on="show_id", how="inner")
+inner_merge
+
+left_merge = titles.merge(extra, on="show_id", how="left")
+left_merge
+
+right_merge = titles.merge(extra, on="show_id", how="right")
+right_merge
+
+outer_merge = titles.merge(extra, on="show_id", how="outer")
+outer_merge
